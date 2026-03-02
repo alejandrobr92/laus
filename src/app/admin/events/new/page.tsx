@@ -17,7 +17,7 @@ export default function AddEvent() {
 
     return (<div className="flex flex-col gap-8">
         <h2 className="text-2xl">New Event</h2>
-        <form action={action} className="grid grid-cols-2 grid-flow-row items-start gap-4 gap-x-12">
+        <form action={action} className="flex flex-col lg:grid lg:grid-cols-2 lg:grid-flow-row items-start gap-4 gap-x-12">
             <EventInput name="artist" type="text" />
             <EventInput name="venue" type="text" />
             <EventInput name="capacity" type="number" />
