@@ -1,14 +1,18 @@
 "use client"
 import { useActionState } from "react";
-import { saveEvent } from "@/actions";
+import { ActionState, saveEvent } from "@/actions";
 import EventInput from "@/components/admin/events/new/EventInput";
 import EventSelect from "@/components/admin/events/new/EventSelect";
 import { zone, format, status } from "@/constants";
 import ImagePicker from "@/components/admin/events/new/ImagePicker";
 
+
+const initialState: ActionState = { success: false };
+
 export default function AddEvent() {
 
-    const [state, action, pending] = useActionState(saveEvent, null);
+
+    const [state, action, pending] = useActionState(saveEvent, initialState);
 
 
     return (<div className="flex flex-col gap-8">

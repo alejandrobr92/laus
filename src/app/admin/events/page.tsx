@@ -1,5 +1,5 @@
 import EventsList from "@/components/admin/events/EventsList";
-import Link from "next/link";
+// import Link from "next/link";
 import { getDb } from "../../../../mongodb";
 
 export default async function Events() {

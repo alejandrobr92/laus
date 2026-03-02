@@ -6,10 +6,15 @@ import { getDb } from "../mongodb";
 import { revalidatePath } from "next/cache";
 import { Event } from "./types";
 
-export async function saveEvent(prevState, formData: FormData) {
+export type ActionState = {
+    success: boolean;
+}
 
-    await new Promise((resolve) => setTimeout(() => resolve(''), 2000));
+export async function saveEvent(prevState: ActionState, formData: FormData) {
 
+    if (!formData.get('name')) return { success: false };
+
+    // await new Promise((resolve) => setTimeout(() => resolve(''), 2000));
 
     const imgExt = (formData?.get('image') as File).name.split('.')[1];
 
@@ -35,10 +40,8 @@ export async function saveEvent(prevState, formData: FormData) {
 
     collection.insertOne(event);
 
+    prevState.success = true;
+
     revalidatePath("/admin/events");
     redirect("/admin/events");
-
-    return {
-        success: true
-    }
 }
